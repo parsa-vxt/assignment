@@ -1,4 +1,11 @@
 {
-  "name": "assignment",
-  "packageManager": "pnpm@10.20.0"
+   "name": "assignment",
+   "packageManager": "pnpm@10.20.0",
+   "scripts": {
+      "format:fix": "prettier --write \"**/*.{ts,tsx,json}\"",
+      "format:check": "prettier --check \"**/*.{ts,tsx,json}\""
+   },
+   "dependencies": {
+      "prettier": "^3.7.4"
+   }
 }
