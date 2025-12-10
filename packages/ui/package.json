@@ -1,4 +1,5 @@
 {
    "name": "ui",
+   "main": "./src/index.ts",
    "scripts": {}
 }

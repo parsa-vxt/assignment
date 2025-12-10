@@ -5,8 +5,14 @@
       "format:fix": "prettier --write \"**/*.{ts,tsx,json}\"",
       "format:check": "prettier --check \"**/*.{ts,tsx,json}\""
    },
+   "dependencies": {
+      "react": "^19.2.1",
+      "react-dom": "^19.2.1"
+   },
    "devDependencies": {
       "@fullstacksjs/eslint-config": "^13.11.2",
+      "@types/react": "^19.2.7",
+      "@types/react-dom": "^19.2.3",
       "eslint": "^9.39.1",
       "globals": "^16.5.0",
       "prettier": "^3.7.4"
