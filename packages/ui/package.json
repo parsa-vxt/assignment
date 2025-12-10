@@ -1,5 +1,13 @@
 {
    "name": "ui",
    "main": "./src/index.ts",
-   "scripts": {}
+   "scripts": {
+      "storybook": "storybook dev -p 6006"
+   },
+   "devDependencies": {
+      "@storybook/react": "^10.1.6",
+      "@storybook/react-vite": "^10.1.6",
+      "eslint-plugin-storybook": "^10.1.6",
+      "storybook": "^10.1.6"
+   }
 }
