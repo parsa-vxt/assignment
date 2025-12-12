@@ -11,7 +11,10 @@ export const RootLayout = ({
 }: RootLayoutProps) => {
    return (
       <div
-         className={cn('w-full min-h-screen bg-background', className)}
+         className={cn(
+            'w-full overflow-x-hidden min-h-screen bg-background',
+            className
+         )}
          {...props}
       >
          {children}

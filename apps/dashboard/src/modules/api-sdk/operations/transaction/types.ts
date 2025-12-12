@@ -18,4 +18,6 @@ export interface GetListVariables {
    chain?: Transaction.Chain;
    status?: Transaction.Status;
    searchKeyword?: string;
+   page?: number;
+   limit?: number;
 }

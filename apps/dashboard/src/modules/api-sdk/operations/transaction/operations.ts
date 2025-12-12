@@ -15,6 +15,8 @@ export const getTransactions = async (
             chain: variables?.chain,
             status: variables?.status,
             q: variables?.searchKeyword,
+            page: variables?.page,
+            limit: variables?.limit,
          },
       })
       .json();

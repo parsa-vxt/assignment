@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import * as Operation from '../operations';
 import { KEYS } from './queryKeys';
@@ -9,4 +9,5 @@ export const useGetList = (
    useQuery({
       queryKey: KEYS.transaction.list(variables).queryKey,
       queryFn: () => Operation.Transaction.getTransactions(variables),
+      placeholderData: keepPreviousData,
    });
