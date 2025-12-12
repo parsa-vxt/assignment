@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { parseAsInteger, parseAsString, useQueryState } from 'nuqs';
 import { Input, Pagination, Select } from 'ui';
 
 import type { Transaction } from './modules/api-sdk/types';
@@ -21,16 +21,28 @@ const STATUS_OPTIONS = Object.entries(STATUS_MAP).map(([key, value]) => ({
 }));
 
 export default function App() {
-   const [page, setPage] = useState(1);
-   const [search, setSearch] = useState('');
-   const [chain, setChain] = useState<Transaction.Chain | null>(null);
-   const [status, setStatus] = useState<Transaction.Status | null>(null);
+   const [page, setPage] = useQueryState(
+      'page',
+      parseAsInteger.withDefault(1).withOptions({ history: 'push' })
+   );
+   const [search, setSearch] = useQueryState(
+      'q',
+      parseAsString.withDefault('').withOptions({ history: 'push' })
+   );
+   const [chain, setChain] = useQueryState(
+      'chain',
+      parseAsString.withOptions({ history: 'push' })
+   );
+   const [status, setStatus] = useQueryState(
+      'status',
+      parseAsString.withOptions({ history: 'push' })
+   );
 
    const { data: queryData } = Query.Transaction.useGetList({
       page,
       searchKeyword: search,
-      chain: chain ?? undefined,
-      status: status ?? undefined,
+      chain: (chain as Transaction.Chain) ?? undefined,
+      status: (status as Transaction.Status) ?? undefined,
       limit: 10,
    });
 
@@ -51,7 +63,7 @@ export default function App() {
                <Input
                   value={search}
                   onChange={(event) => {
-                     setSearch(event.target.value);
+                     setSearch(event.target.value || null);
                      setPage(1);
                   }}
                   placeholder="Search transactions..."
@@ -62,7 +74,7 @@ export default function App() {
                   <Select
                      value={chain}
                      onChange={(value) => {
-                        setChain(value as Transaction.Chain | null);
+                        setChain(value);
                         setPage(1);
                      }}
                      options={CHAIN_OPTIONS}
@@ -73,7 +85,7 @@ export default function App() {
                   <Select
                      value={status}
                      onChange={(value) => {
-                        setStatus(value as Transaction.Status | null);
+                        setStatus(value);
                         setPage(1);
                      }}
                      options={STATUS_OPTIONS}
