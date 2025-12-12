@@ -1,4 +1,4 @@
-import type { Transaction } from '../types';
+import type { Pagination, Transaction, WithPagination } from '../types';
 import { generateBase58, generateHex, randomRange, fuzzyMatch } from '../utils';
 
 const CHAINS: Transaction.Chain[] = ['ethereum', 'solana', 'bnb'];
@@ -66,8 +66,11 @@ class TransactionService {
       });
    }
 
-   public getTransactions(filters: Transaction.Filters) {
-      return this.transactions.filter((tx) => {
+   public getTransactions(
+      filters: Transaction.Filters,
+      pagination: Pagination = { page: 1, limit: 10 }
+   ): WithPagination<Transaction[]> {
+      const filtered = this.transactions.filter((tx) => {
          const matchesChain = !filters.chain || tx.chain === filters.chain;
          const matchesStatus = !filters.status || tx.status === filters.status;
          const matchesQ =
@@ -78,6 +81,21 @@ class TransactionService {
 
          return matchesChain && matchesStatus && matchesQ;
       });
+
+      const total = filtered.length;
+      const totalPages = Math.ceil(total / pagination.limit);
+      const startIndex = (pagination.page - 1) * pagination.limit;
+      const endIndex = startIndex + pagination.limit;
+
+      return {
+         data: filtered.slice(startIndex, endIndex),
+         meta: {
+            total,
+            page: pagination.page,
+            limit: pagination.limit,
+            totalPages,
+         },
+      };
    }
 }
 
