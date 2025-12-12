@@ -1,9 +1,3 @@
-import { Button } from 'ui';
-
 export default function App() {
-   return (
-      <div>
-         <Button>Hello World</Button>
-      </div>
-   );
+   return <div className="w-full"></div>;
 }
