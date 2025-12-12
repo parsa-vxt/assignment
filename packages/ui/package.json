@@ -15,7 +15,8 @@
       "react": "catalog:",
       "react-dom": "catalog:",
       "tailwindcss": "catalog:",
-      "toolbox": "workspace:*"
+      "toolbox": "workspace:*",
+      "lucide-react": "catalog:"
    },
    "dependenciesMeta": {
       "toolbox": {

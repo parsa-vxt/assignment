@@ -8,3 +8,4 @@ catalog:
    react-dom: ^19.2.1
    '@types/react-dom': ^19.2.3
    tailwindcss: ^4.1.17
+   lucide-react: 0.561.0
