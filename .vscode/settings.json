@@ -1,7 +1,4 @@
 {
-    "cSpell.words": [
-        "fullstacksjs",
-        "lucide",
-        "solana"
-    ]
+   "cSpell.words": ["fullstacksjs", "lucide", "solana"],
+   "tailwindCSS.classFunctions": ["cva", "cx"]
 }

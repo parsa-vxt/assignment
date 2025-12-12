@@ -8,32 +8,63 @@ import { Table } from 'ui';
 
 import type { TransactionDto } from '../../api-sdk/DTOs/TransactionDto';
 
+import {
+   AddressCell,
+   AmountCell,
+   ChainCell,
+   DateCell,
+   HashCell,
+   StatusCell,
+} from './components';
+
 const columnHelper = createColumnHelper<TransactionDto>();
 
 const columns = [
    columnHelper.accessor('txHash', {
       header: 'Hash',
-      cell: (info) => info.getValue(),
+      cell: (info) => <HashCell hash={info.getValue()} />,
+   }),
+   columnHelper.accessor('chain', {
+      header: 'Chain',
+      cell: (info) => <ChainCell chain={info.getValue()} />,
+      size: 50,
    }),
    columnHelper.accessor('amount', {
       header: 'Amount',
-      cell: (info) => info.getValue(),
+      cell: (info) => (
+         <AmountCell
+            amount={info.getValue()}
+            tokenSymbol={info.row.original.tokenSymbol}
+         />
+      ),
+      size: 150,
    }),
    columnHelper.accessor('fromAddress', {
       header: 'From',
-      cell: (info) => info.getValue(),
+      cell: (info) => (
+         <AddressCell
+            address={info.getValue()}
+            chain={info.row.original.chain}
+         />
+      ),
    }),
    columnHelper.accessor('toAddress', {
       header: 'To',
-      cell: (info) => info.getValue(),
+      cell: (info) => (
+         <AddressCell
+            address={info.getValue()}
+            chain={info.row.original.chain}
+         />
+      ),
    }),
    columnHelper.accessor('status', {
       header: 'Status',
-      cell: (info) => info.getValue(),
+      cell: (info) => <StatusCell status={info.getValue()} />,
+      size: 100,
    }),
    columnHelper.accessor('timestamp', {
       header: 'Date',
-      cell: (info) => info.getValue().toLocaleString(),
+      cell: (info) => <DateCell date={info.getValue()} />,
    }),
 ];
 
@@ -55,7 +86,13 @@ export const TransactionDataTable = ({ data }: TransactionDataTableProps) => {
                {table.getHeaderGroups().map((headerGroup) => (
                   <Table.Row key={headerGroup.id}>
                      {headerGroup.headers.map((header) => (
-                        <Table.Head key={header.id}>
+                        <Table.Head
+                           key={header.id}
+                           style={{
+                              width: header.getSize(),
+                              minWidth: header.getSize(),
+                           }}
+                        >
                            {header.isPlaceholder
                               ? null
                               : flexRender(
