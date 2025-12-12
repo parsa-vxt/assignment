@@ -7,10 +7,10 @@ import { mapTransaction } from './mappers';
 export const getTransactions = async (variables: GetListVariables = {}) => {
    const data = await httpClient
       .get<TransactionApiResponse[]>(ROUTES.transaction.list, {
-         json: {
-            chain: variables.chain,
-            status: variables.status,
-            q: variables.searchKeyword,
+         searchParams: {
+            chain: variables?.chain,
+            status: variables?.status,
+            q: variables?.searchKeyword,
          },
       })
       .json();

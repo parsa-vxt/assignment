@@ -1,5 +1,5 @@
 export const ROUTES = {
    transaction: {
-      list: '/transaction',
+      list: 'transactions',
    },
 } as const;
