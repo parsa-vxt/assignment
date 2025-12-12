@@ -45,6 +45,7 @@ export const Button = ({
    size,
    loading,
    disabled,
+   className,
    ...props
 }: ButtonProps) => (
    // eslint-disable-next-line @eslint-react/dom/no-missing-button-type
@@ -52,7 +53,7 @@ export const Button = ({
       {...props}
       className={cn(
          buttonClasses({ variant, size, loading, disabled }),
-         props.className
+         className
       )}
    />
 );
