@@ -36,7 +36,7 @@ export function OptionList({
 
    return (
       <div
-         className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-input bg-popover p-1 shadow-md focus:outline-none"
+         className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-input bg-popover p-1 shadow-md focus:outline-none bg-background"
          id={id}
          role="listbox"
       >

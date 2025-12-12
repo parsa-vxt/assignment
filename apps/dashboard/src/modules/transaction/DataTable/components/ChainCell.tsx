@@ -1,15 +1,11 @@
 import type { Transaction } from '../../../api-sdk';
 
+import { CHAIN_MAP } from '../../constants';
+
 interface ChainCellProps {
    chain: Transaction.Chain;
 }
 
-const chainNames: Record<Transaction.Chain, string> = {
-   bnb: 'BNB',
-   ethereum: 'Ethereum',
-   solana: 'Solana',
-};
-
 export const ChainCell = ({ chain }: ChainCellProps) => {
-   return <span>{chainNames[chain]}</span>;
+   return <span>{CHAIN_MAP[chain]}</span>;
 };

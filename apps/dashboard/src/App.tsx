@@ -1,16 +1,36 @@
 import { useState } from 'react';
-import { Input, Pagination } from 'ui';
+import { Input, Pagination, Select } from 'ui';
+
+import type { Transaction } from './modules/api-sdk/types';
 
 import { Query } from './modules/api-sdk';
-import { TransactionDataTable } from './modules/transaction';
+import {
+   CHAIN_MAP,
+   STATUS_MAP,
+   TransactionDataTable,
+} from './modules/transaction';
+
+const CHAIN_OPTIONS = Object.entries(CHAIN_MAP).map(([key, value]) => ({
+   label: value,
+   value: key,
+}));
+
+const STATUS_OPTIONS = Object.entries(STATUS_MAP).map(([key, value]) => ({
+   label: value,
+   value: key,
+}));
 
 export default function App() {
    const [page, setPage] = useState(1);
    const [search, setSearch] = useState('');
+   const [chain, setChain] = useState<Transaction.Chain | null>(null);
+   const [status, setStatus] = useState<Transaction.Status | null>(null);
 
    const { data: queryData } = Query.Transaction.useGetList({
       page,
       searchKeyword: search,
+      chain: chain ?? undefined,
+      status: status ?? undefined,
       limit: 10,
    });
 
@@ -26,8 +46,8 @@ export default function App() {
             </p>
          </div>
 
-         <div className="flex items-center justify-between">
-            <div className="w-full max-w-sm">
+         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="w-full sm:max-w-sm">
                <Input
                   value={search}
                   onChange={(event) => {
@@ -37,8 +57,31 @@ export default function App() {
                   placeholder="Search transactions..."
                />
             </div>
+            <div className="flex flex-col gap-2 sm:flex-row">
+               <div className="w-full sm:w-[200px]">
+                  <Select
+                     value={chain}
+                     onChange={(value) => {
+                        setChain(value as Transaction.Chain | null);
+                        setPage(1);
+                     }}
+                     options={CHAIN_OPTIONS}
+                     placeholder="Filter by chain"
+                  />
+               </div>
+               <div className="w-full sm:w-[200px]">
+                  <Select
+                     value={status}
+                     onChange={(value) => {
+                        setStatus(value as Transaction.Status | null);
+                        setPage(1);
+                     }}
+                     options={STATUS_OPTIONS}
+                     placeholder="Filter by status"
+                  />
+               </div>
+            </div>
          </div>
-
          <TransactionDataTable data={transactions} />
 
          {meta ? (

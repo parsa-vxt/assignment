@@ -1,5 +1,7 @@
 import type { Transaction } from '../../../api-sdk';
 
+import { STATUS_MAP } from '../../constants';
+
 interface StatusCellProps {
    status: Transaction.Status;
 }
@@ -15,7 +17,7 @@ export const StatusCell = ({ status }: StatusCellProps) => {
       <span
          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[status]}`}
       >
-         {status.charAt(0).toUpperCase() + status.slice(1)}
+         {STATUS_MAP[status]}
       </span>
    );
 };
