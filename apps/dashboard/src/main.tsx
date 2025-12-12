@@ -4,12 +4,15 @@ import 'ui/tailwind.css';
 
 import './styles/global.css';
 import App from './App.tsx';
-import { RootLayout } from './layouts/RootLayout.tsx';
+import { RootLayout } from './layouts';
+import { TanStackQueryProvider } from './providers';
 
 createRoot(document.getElementById('root')!).render(
    <StrictMode>
-      <RootLayout>
-         <App />
-      </RootLayout>
+      <TanStackQueryProvider>
+         <RootLayout>
+            <App />
+         </RootLayout>
+      </TanStackQueryProvider>
    </StrictMode>
 );

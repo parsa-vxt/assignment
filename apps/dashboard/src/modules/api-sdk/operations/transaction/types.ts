@@ -13,3 +13,9 @@ export interface TransactionApiResponse {
    timestamp: Iso8601DateTime;
    status: Transaction.Status;
 }
+
+export interface GetListVariables {
+   chain?: Transaction.Chain;
+   status?: Transaction.Status;
+   searchKeyword?: string;
+}
