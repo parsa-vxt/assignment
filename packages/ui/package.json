@@ -29,6 +29,7 @@
       "@types/react": "catalog:",
       "@types/react-dom": "catalog:",
       "postcss": "^8.5.6",
-      "storybook": "^10.1.6"
+      "storybook": "^10.1.6",
+      "typescript": "catalog:"
    }
 }
