@@ -99,7 +99,9 @@ export default function App() {
          {meta ? (
             <Pagination
                currentPage={page}
+               nextLabel=""
                onPageChange={setPage}
+               previousLabel=""
                totalPages={meta.totalPages}
             />
          ) : null}

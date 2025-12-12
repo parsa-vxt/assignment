@@ -1,4 +1,6 @@
-html, body {
-    width: 100vw;
-    min-height: 100vh;
+html,
+body {
+   width: 100vw;
+   min-height: 100vh;
+   min-width: 360px;
 }
