@@ -11,16 +11,23 @@
       "storybook": "storybook dev -p 6006 --no-open"
    },
    "dependencies": {
+      "class-variance-authority": "^0.7.1",
       "react": "catalog:",
       "react-dom": "catalog:",
-      "tailwindcss": "catalog:"
+      "tailwindcss": "catalog:",
+      "toolbox": "workspace:*"
+   },
+   "dependenciesMeta": {
+      "toolbox": {
+         "injected": true
+      }
    },
    "devDependencies": {
+      "@storybook/react-vite": "^10.1.6",
       "@tailwindcss/postcss": "^4.1.17",
       "@types/react": "catalog:",
       "@types/react-dom": "catalog:",
       "postcss": "^8.5.6",
-      "storybook": "^10.1.6",
-      "@storybook/react-vite": "^10.1.6"
+      "storybook": "^10.1.6"
    }
 }

@@ -1,7 +1,9 @@
+import { Button } from 'ui';
+
 export default function App() {
    return (
       <div>
-         <h1 className="bg-green-400">App</h1>
+         <Button>Hello World</Button>
       </div>
    );
 }
