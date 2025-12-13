@@ -8,7 +8,9 @@
       "./tailwind.css": "./src/tailwind.css"
    },
    "scripts": {
-      "storybook": "storybook dev -p 6006 --no-open"
+      "storybook": "storybook dev -p 6006 --no-open",
+      "lint:check": "eslint ./src",
+      "lint:fix": "eslint ./src --fix"
    },
    "dependencies": {
       "class-variance-authority": "^0.7.1",

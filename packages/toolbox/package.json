@@ -12,5 +12,9 @@
    },
    "devDependencies": {
       "typescript": "catalog:"
+   },
+   "scripts": {
+      "lint:check": "eslint ./src",
+      "lint:fix": "eslint ./src --fix"
    }
 }
