@@ -2,6 +2,7 @@ import { NuqsAdapter } from 'nuqs/adapters/react';
 import { StrictMode } from 'react';
 import 'ui/tailwind.css';
 
+import './modules/env';
 import './styles/global.css';
 import { createRoot } from 'react-dom/client';
 
