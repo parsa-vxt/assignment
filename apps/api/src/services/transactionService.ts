@@ -1,5 +1,6 @@
 import type { Pagination, Transaction, WithPagination } from '../types';
-import { generateBase58, generateHex, randomRange, fuzzyMatch } from '../utils';
+
+import { fuzzyMatch, generateBase58, generateHex, randomRange } from '../utils';
 
 const CHAINS: Transaction.Chain[] = ['ethereum', 'solana', 'bnb'];
 const STATUSES: Transaction.Status[] = ['pending', 'confirmed', 'failed'];

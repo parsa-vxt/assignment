@@ -19,7 +19,7 @@ export namespace Transaction {
       q?: string;
    }
 
-   export type Chain = 'ethereum' | 'solana' | 'bnb';
+   export type Chain = 'bnb' | 'ethereum' | 'solana';
 
-   export type Status = 'pending' | 'confirmed' | 'failed';
+   export type Status = 'confirmed' | 'failed' | 'pending';
 }

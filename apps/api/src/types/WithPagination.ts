@@ -1,4 +1,4 @@
-export type WithPagination<T> = {
+export interface WithPagination<T> {
    data: T;
    meta: {
       total: number;
@@ -6,4 +6,4 @@ export type WithPagination<T> = {
       limit: number;
       totalPages: number;
    };
-};
+}
