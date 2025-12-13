@@ -5,8 +5,9 @@
    "scripts": {
       "dev": "vite",
       "build": "tsc -b && vite build",
-      "lint": "eslint .",
-      "preview": "vite preview"
+      "preview": "vite preview",
+      "lint:check": "eslint ./src",
+      "lint:fix": "eslint ./src --fix"
    },
    "dependencies": {
       "@lukemorales/query-key-factory": "^1.3.4",
