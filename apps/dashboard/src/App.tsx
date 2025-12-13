@@ -44,7 +44,7 @@ export default function App() {
       setPage(1);
    }, 500);
 
-   const { data: queryData } = Query.Transaction.useGetList({
+   const { data: queryData, isLoading } = Query.Transaction.useGetList({
       page,
       searchKeyword: search,
       chain: (chain as Transaction.Chain) ?? undefined,
@@ -54,6 +54,14 @@ export default function App() {
 
    const transactions = queryData?.data ?? [];
    const meta = queryData?.meta;
+
+   if (isLoading) {
+      return (
+         <div className="flex h-screen w-full items-center justify-center bg-background">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+         </div>
+      );
+   }
 
    return (
       <div className="mx-auto w-full max-w-7xl space-y-6 p-8">
