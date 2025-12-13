@@ -1,5 +1,6 @@
 import { parseAsInteger, parseAsString, useQueryState } from 'nuqs';
 import { Input, Pagination, Select } from 'ui';
+import { useDebouncedCallback } from 'use-debounce';
 
 import type { Transaction } from './modules/api-sdk/types';
 
@@ -38,6 +39,11 @@ export default function App() {
       parseAsString.withOptions({ history: 'push' })
    );
 
+   const handleSearch = useDebouncedCallback((value: string) => {
+      setSearch(value);
+      setPage(1);
+   }, 500);
+
    const { data: queryData } = Query.Transaction.useGetList({
       page,
       searchKeyword: search,
@@ -61,10 +67,9 @@ export default function App() {
          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="w-full sm:max-w-sm">
                <Input
-                  value={search}
+                  defaultValue={search}
                   onChange={(event) => {
-                     setSearch(event.target.value || null);
-                     setPage(1);
+                     handleSearch(event.target.value);
                   }}
                   placeholder="Search transactions..."
                />
